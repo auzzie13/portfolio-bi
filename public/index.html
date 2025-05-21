@@ -5,37 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BI Portfolio</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <div id="navbar"></div>
+    <div id="social-sidebar"></div>
 
-    <header>
-      <h1>Hello World</h1>
-    </header>
-
-    <section id="projects">
-      <h2>Projects</h2>
-      <div id="project-list"></div>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <form id="contactForm">
-        <input type="text" name="name" placeholder="Your name" required />
-        <input type="email" name="email" placeholder="Your email" required />
-        <textarea name="message" placeholder="Your message"></textarea>
-        <button type="submit">Send</button>
-      </form>
-      <div id="formResponse"></div>
-    </section>
+    <div id="main-wrapper">
+      <header>
+        <h1>Full Stack Developer | BI Analyst</h1>
+      </header>
+      <div id="main-content">
+        <div id="main-card">card</div>
+        <div id="about-me">
+          <h1>
+            Hey<br />I am <span id="name">Austin</span>,<br />a business
+            intelligence-focused web developer.
+          </h1>
+        </div>
+        <div id="project-highlights">highlights</div>
+      </div>
+    </div>
 
     <script src="script.js"></script>
-    <script>
-        fetch("navbar.html")
-          .then(res => res.text())
-          .then(html => {
-            document.getElementById("navbar").innerHTML = html;
-          });
-      </script>
   </body>
 </html>
