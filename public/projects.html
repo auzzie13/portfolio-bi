@@ -11,11 +11,25 @@
   <body>
     <div id="navbar"></div>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <div id="project-list"></div>
+    <section id="project-section">
+      <div class="filter-buttons">
+        <button data-filter="all">All</button>
+        <button data-filter="frontend">Front End</button>
+        <button data-filter="backend">Back End</button>
+        <button data-filter="tableau">Tableau</button>
+      </div>
+    
+      <div class="carousel">
+        <button class="arrow left">&lt;</button>
+        <div class="carousel-item" id="projectDisplay">
+          <!-- JS will inject project content here -->
+        </div>
+        <button class="arrow right">&gt;</button>
+      </div>
     </section>
+    
 
-    <script src="script.js"></script>
+    <script src="/components/projectCarousel.js"></script>
+
   </body>
 </html>
