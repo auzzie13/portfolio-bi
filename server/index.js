@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-//const db = require('./db');
+// const db = require('./db');
 require('dotenv').config();
 
 const app = express();
@@ -17,13 +17,14 @@ app.use(express.static('public'));
 //   });
 // });
 
-// app.post('/api/contact', (req, res) => {
-//   const { name, email, message } = req.body;
-//   db.query('INSERT INTO contact (name, email, message) VALUES (?, ?, ?)', [name, email, message], (err) => {
-//     if (err) return res.status(500).json({ message: 'Error saving message' });
-//     res.json({ message: 'Message received!' });
-//   });
-// });
+app.post('/api/contact', (req, res) => {
+  const { name, email, message } = req.body;
+  // db.query('INSERT INTO contact (name, email, message) VALUES (?, ?, ?)', [name, email, message], (err) => {
+  //   if (err) return res.status(500).json({ message: 'Error saving message' });
+  //   res.json({ message: 'Message received!' });
+  // });
+  console.log("name: " + name + " Email: " + email + " Message: " + message);
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
