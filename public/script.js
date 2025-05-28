@@ -54,6 +54,11 @@ if (path.endsWith("index.html")) {
   const form = document.getElementById("contactForm");
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    if (!form.name.value.trim()) return alert("Name is required.");
+    if (!form.email.value.trim() || !form.email.value.includes("@"))
+      return alert("Valid email required.");
+    if (!form.message.value.trim()) return alert("Message is required.");
     const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
     console.log(payload);
@@ -64,7 +69,12 @@ if (path.endsWith("index.html")) {
       body: JSON.stringify(payload),
     });
     const result = await res.json();
-    document.getElementById("formResponse").textContent = result.message;
-    form.reset();
+    if (!res.ok) {
+      document.getElementById("formResponse").textContent =
+        "Error: " + result.message;
+    } else {
+      document.getElementById("formResponse").textContent = result.message;
+      form.reset();
+    }
   });
 }
