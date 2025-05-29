@@ -12,19 +12,23 @@ app.use(express.json());
 app.use(express.static("public"));
 
 const transporter = nodemailer.createTransport({
-  service: "Gmail", // or your email provider
+  service: "Gmail",
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
 });
 
-// app.get('/api/projects', (req, res) => {
-//   db.query('SELECT * FROM projects', (err, results) => {
-//     if (err) return res.status(500).json({ error: err.message });
-//     res.json(results);
-//   });
-// });
+app.get("/api/projects", (req, res) => {
+  db.query("SELECT * FROM projects", (err, results) => {
+    if (err) {
+      console.error("Failed to fetch projects:", err);
+      return res.status(500).json({ message: "Failed to fetch projects" });
+    }
+    res.json(results);
+  });
+});
+
 
 app.post("/api/contact", (req, res) => {
   const { name, email, message } = req.body;
@@ -57,10 +61,9 @@ app.post("/api/contact", (req, res) => {
           .json({ message: "Failed to save message. Try again later." });
       }
 
-      // Email options to notify you of the new message
       const mailOptions = {
         from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER, // Your email address to receive the notification
+        to: process.env.EMAIL_USER,
         subject: `New contact form message from ${name.trim()}`,
         text: `Name: ${name.trim()}\nEmail: ${email.trim()}\nMessage: ${message.trim()}`,
       };
@@ -68,13 +71,11 @@ app.post("/api/contact", (req, res) => {
       transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
           console.error("Email send error:", error);
-          // We still respond success because DB insert worked
         } else {
           console.log("Email sent:", info.response);
         }
       });
 
-      // Respond success to frontend
       res.json({ message: "Message received!" });
     }
   );

@@ -1,17 +1,6 @@
 const path = window.location.pathname;
 
-// document.addEventListener("DOMContentLoaded", () => {
-//     fetch("/api/projects")
-//       .then(res => res.json())
-//       .then(data => {
-//         const list = document.getElementById("project-list");
-//         list.innerHTML = data.map(p => `
-//           <div class="project">
-//             <h3>${p.title}</h3>
-//             <p>${p.description}</p>
-//           </div>
-//         `).join("");
-//       });
+
 fetch("components/sidebar.html")
   .then((res) => res.text())
   .then((html) => {

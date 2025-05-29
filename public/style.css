@@ -378,7 +378,6 @@ header {
   height: 600px;
 }
 
-/* LEFT SIDE: Rotated image */
 .about-left {
   flex: 1;
   display: flex;
@@ -390,7 +389,6 @@ header {
 .about-photo {
   max-height: 100%;
   max-width: 100%;
-  transform: rotate(-90deg);
   border-radius: 12px;
   border: 3px solid #98faec;
   box-shadow: 0 0 16px #12f7d660;
@@ -463,6 +461,33 @@ header {
 .resume-button:hover {
   background-color: #76e6d1;
 }
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #12f7d6;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid #12f7d650;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+  margin-top: 1rem;
+  background-color: #1a1e23;
+}
+
+.project-link i {
+  font-size: 1.1rem;
+}
+
+.project-link:hover {
+  background-color: #12f7d620;
+  color: #76e6d1;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px #12f7d660;
+}
+
 
 
 
