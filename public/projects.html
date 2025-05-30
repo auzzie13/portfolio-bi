@@ -1,35 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projects</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
+    <meta
+      name="description"
+      content="Austin Williams - Business Intelligence Developer Portfolio"
+    />
+    <link rel="icon" type="image/png" href="assets/headshot.png" />
   </head>
   <body>
     <div id="navbar"></div>
+    <div id="social-sidebar"></div>
+
 
     <section id="project-section">
       <div class="filter-buttons">
         <button data-filter="all">All</button>
-        <button data-filter="frontend">Frontend</button>
-        <button data-filter="backend">Backend</button>
+        <button data-filter="redcamp">REDCap Modules</button>
         <button data-filter="tableau">Tableau</button>
+        <button data-filter="bootcamp">Bootcamp</button>
       </div>
     
       <div class="carousel">
         <button class="arrow left">&lt;</button>
         <div class="carousel-item" id="projectDisplay">
-          <!-- JS will inject project content here -->
+          
         </div>
         <button class="arrow right">&gt;</button>
       </div>
     </section>
     
-    <script src="script.js"></script>
-    <script src="/components/projectCarousel.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/projectCarousel.js"></script>
 
   </body>
 </html>
