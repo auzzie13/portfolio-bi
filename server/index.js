@@ -72,7 +72,7 @@ app.post("/api/contact", (req, res) => {
         if (error) {
           console.error("Email send error:", error);
         } else {
-          console.log("Email sent:", info.response);
+          console.log("Contact form email sent successfully.");
         }
       });
 
