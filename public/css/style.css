@@ -499,7 +499,7 @@ header {
   font-size: 2rem;
   background: none;
   border: none;
-  color: white;
+  color: #76e6d1;
   cursor: pointer;
 }
 
@@ -589,7 +589,7 @@ header {
   }
 
   header {
-    margin-top: 2rem;
+    margin-top: 8rem;
   }
 
   .profile-pic-container {
