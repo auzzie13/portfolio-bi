@@ -513,9 +513,9 @@ header {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 60px; /* adjust to your navbar height */
+    top: 60px; 
     right: 0;
-    background-color: #222; /* adjust to your theme */
+    background-color: #222; 
     width: 100%;
     padding: 1rem;
     text-align: right;
@@ -622,6 +622,10 @@ header {
   #talk {
     font-size: 1.5em;
   }
+
+  .logo-symbol {
+    display: none;
+}
 
   .project-stats {
     flex-direction: column;
