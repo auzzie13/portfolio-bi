@@ -31,8 +31,26 @@ function loadNavbar() {
           link.classList.add("active");
         }
       });
+
+      // 🔥 Add burger menu functionality here
+      const burger = document.getElementById("burger");
+      const navList = document.getElementById("nav-list");
+
+      if (burger && navList) {
+        burger.addEventListener("click", () => {
+          navList.classList.toggle("show");
+        });
+
+        // Optional: close menu on link click
+        navList.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => {
+            navList.classList.remove("show");
+          });
+        });
+      }
     });
 }
+
 
 // Handle logic specific to each page
 function handlePageSpecificLogic(path) {
