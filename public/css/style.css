@@ -588,6 +588,10 @@ header {
     font-size: 1.2rem;
   }
 
+  header {
+    margin-top: 2rem;
+  }
+
   .profile-pic-container {
     width: 100px;
     height: 100px;
