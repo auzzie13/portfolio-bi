@@ -1,5 +1,5 @@
 let projects = [];
-let currentIndex = 0;
+let currentIndex = 3;
 let currentFilter = "all";
 
 async function loadProjects() {
