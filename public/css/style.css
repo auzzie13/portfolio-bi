@@ -550,9 +550,9 @@ header {
     padding: 2rem 1rem;
   }
 
-  .carousel {
+  /* .carousel {
     flex-direction: column;
-  }
+  } */
 
   .carousel-item {
     width: 90%;
