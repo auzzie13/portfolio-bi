@@ -1,5 +1,5 @@
 let projects = [];
-let currentIndex = 3;
+let currentIndex = 0;
 let currentFilter = "all";
 
 async function loadProjects() {
@@ -19,7 +19,7 @@ function renderProject(index) {
   if (filtered.length === 0) return;
 
   const proj = filtered[index % filtered.length];
-  const isVideo = proj.link.includes("vimeo.com");
+  const isVideo = proj.gif.includes("vimeo.com");
   const iconClass = proj.link.includes("github.com")
     ? "fab fa-github"
     : isVideo
@@ -29,8 +29,10 @@ function renderProject(index) {
   let mediaContent;
 
   if (isVideo) {
-    const videoId = proj.link.split("vimeo.com/")[1];
-    const thumbnailUrl = `https://vumbnail.com/${videoId}.jpg`;
+    const fullId = proj.gif.split("vimeo.com/")[1];
+    const videoId = fullId.split("/")[0];
+    const thumbnailUrl = `https://vumbnail.com/${fullId}.jpg`;
+
 
     mediaContent = `
       <div class="video-wrapper lazy-video" data-video-id="${videoId}">
@@ -72,8 +74,6 @@ function attachLazyVideoListeners() {
     });
   });
 }
-
-
 
 document.querySelector(".left").addEventListener("click", () => {
   currentIndex = (currentIndex - 1 + projects.length) % projects.length;
