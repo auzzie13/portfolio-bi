@@ -19,19 +19,61 @@ function renderProject(index) {
   if (filtered.length === 0) return;
 
   const proj = filtered[index % filtered.length];
-
+  const isVideo = proj.link.includes("vimeo.com");
   const iconClass = proj.link.includes("github.com")
     ? "fab fa-github"
+    : isVideo
+    ? "fab fa-vimeo"
     : "fas fa-external-link-alt";
 
+  let mediaContent;
+
+  if (isVideo) {
+    const videoId = proj.link.split("vimeo.com/")[1];
+    const thumbnailUrl = `https://vumbnail.com/${videoId}.jpg`;
+
+    mediaContent = `
+      <div class="video-wrapper lazy-video" data-video-id="${videoId}">
+        <img src="${thumbnailUrl}" alt="Video thumbnail" class="video-thumb" />
+        <div class="play-button">&#9658;</div>
+      </div>
+    `;
+  } else {
+    mediaContent = `
+      <img src="${proj.gif}" alt="Project gif" style="width:100%; max-height:200px; object-fit:contain;">
+    `;
+  }
+
   document.getElementById("projectDisplay").innerHTML = `
-  <img src="${proj.gif}" alt="Project gif" style="width:100%; max-height:200px; object-fit:contain;">
-  <p>${proj.description}</p>
-  <a href="${proj.link}" target="_blank" class="project-link">
-   <i class="${iconClass}"></i> View Project
-  </a>
-`;
+    ${mediaContent}
+    <p>${proj.description}</p>
+    <a href="${proj.link}" target="_blank" class="project-link">
+      <i class="${iconClass}"></i> View Project
+    </a>
+  `;
+
+  attachLazyVideoListeners();
 }
+
+function attachLazyVideoListeners() {
+  const lazyVideos = document.querySelectorAll(".lazy-video");
+
+  lazyVideos.forEach((wrapper) => {
+    wrapper.addEventListener("click", () => {
+      const videoId = wrapper.dataset.videoId;
+      wrapper.innerHTML = `
+        <iframe 
+          src="https://player.vimeo.com/video/${videoId}?autoplay=1" 
+          frameborder="0" 
+          allow="autoplay; fullscreen; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      `;
+    });
+  });
+}
+
+
 
 document.querySelector(".left").addEventListener("click", () => {
   currentIndex = (currentIndex - 1 + projects.length) % projects.length;
